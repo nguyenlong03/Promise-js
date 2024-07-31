@@ -1,3 +1,49 @@
+// cách in data api ra màn hình
+// const fetchApi = async () => {
+//   let request = "https://jsonplaceholder.typicode.com/photos";
+//   try {
+//     let response = await fetch(request);
+//     let data = await response.json();
+//     const container = document.getElementById("data-container");
+//     container.innerHTML = data
+//       .slice(0, 10)
+//       .map(
+//         (item) => `
+//         <h2>${item.title}</h2>
+//         <img src="${item.thumbnailUrl}" alt="${item.title}" style="max-width: 150px;" />
+//       </div>
+//     `
+//       )
+//       .join("");
+//   } catch (error) {
+//     console.log("error");
+//   }
+// };
+// fetchApi();
+
+// lấy api = axios ASYNC AWAIT
+// const testsdata = async () => {
+//   const request = "https://jsonplaceholder.typicode.com/photos";
+//   const todo = async () => {
+//     response = await axios.get(request);
+//     return response.data;
+//   };
+
+//   let btn = document.getElementById("btn");
+//   btn.innerHTML = "click me";
+//   btn.addEventListener("click", async () => {
+//     try {
+//       const data = await todo();
+//       console.log(data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   });
+
+//   console.log(btn);
+// };
+// testsdata();
+
 const tinhtoan = (data, resolve, reject) => {
   if (data % 2 == 0) {
     resolve(data);
