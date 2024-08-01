@@ -1,4 +1,4 @@
-// cách in data api ra màn hình
+//      cách in data api ra màn hình
 // const fetchApi = async () => {
 //   let request = "https://jsonplaceholder.typicode.com/photos";
 //   try {
@@ -21,7 +21,7 @@
 // };
 // fetchApi();
 
-// lấy api = axios ASYNC AWAIT
+//           lấy api = axios ASYNC AWAIT
 // const testsdata = async () => {
 //   const request = "https://jsonplaceholder.typicode.com/photos";
 //   const todo = async () => {
@@ -44,25 +44,25 @@
 // };
 // testsdata();
 
-const tinhtoan = (data, resolve, reject) => {
-  if (data % 2 == 0) {
-    resolve(data);
-  } else {
-    reject("Error");
-  }
-};
+// const tinhtoan = (data, resolve, reject) => {
+//   if (data % 2 == 0) {
+//     resolve(data);
+//   } else {
+//     reject("Error");
+//   }
+// };
 
-const aPromise1 = new Promise((resolve, reject) => {
-  tinhtoan(4, resolve, reject);
-});
-const aPromise2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    tinhtoan(8, resolve, reject);
-  }, 3000);
-});
-const aPromise3 = new Promise((resolve, reject) => {
-  tinhtoan(6, resolve, reject);
-});
+// const aPromise1 = new Promise((resolve, reject) => {
+//   tinhtoan(4, resolve, reject);
+// });
+// const aPromise2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     tinhtoan(8, resolve, reject);
+//   }, 3000);
+// });
+// const aPromise3 = new Promise((resolve, reject) => {
+//   tinhtoan(6, resolve, reject);
+// });
 
 // const excume = async () => {
 //   const newprom = await aPromise1;
@@ -74,22 +74,22 @@ const aPromise3 = new Promise((resolve, reject) => {
 // };
 // excume();
 
-aPromise1
-  .then((data) => {
-    console.log(data);
-    return aPromise2;
-  })
-  .then((data) => {
-    console.log(data);
-    return aPromise3;
-  })
-  .then((data) => {
-    console.log(data);
-  })
+// aPromise1
+//   .then((data) => {
+//     console.log(data);
+//     return aPromise2;
+//   })
+//   .then((data) => {
+//     console.log(data);
+//     return aPromise3;
+//   })
+//   .then((data) => {
+//     console.log(data);
+//   })
 
-  .catch((err) => {
-    console.error(err);
-  });
+//   .catch((err) => {
+//     console.error(err);
+//   });
 
 // promise => cấu trúc như sau :
 /*
@@ -127,3 +127,102 @@ còn nếu hàm promise mà trả về giá trị là false (reject) thì ta s�
      
   
   */
+
+// callback hell
+
+// function progames1() {
+//
+//     setTimeout(() => {
+//       console.log(1);
+//       resolve(1);
+//     }, 2000);
+//
+// }
+// function progames2(callback) {
+//   setTimeout(() => {
+//     console.log(2);
+//     callback();
+//   }, 1000);
+// }
+// function progames3(callback) {
+//   setTimeout(() => {
+//     console.log(3);
+//     callback();
+//   }, 5000);
+// }
+
+// function progames4() {
+//   console.log(4);
+// }
+
+// progames1(() => {
+//   progames2(() => {
+//     progames3(() => {
+//       progames4();
+//     });
+//   });
+// });
+
+//  sử dụng promise
+function progames1() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(1);
+      resolve(1);
+    }, 2000);
+  });
+}
+function progames2() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(2);
+      resolve(2);
+    }, 1000);
+  });
+}
+function progames3() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(3);
+      resolve(3);
+    }, 5000);
+  });
+}
+
+function progames4() {
+  return new Promise((resolve, reject) => {
+    resolve(4);
+  });
+}
+
+// progames1()
+//   .then((data) => {
+//     console.log(data);
+//     return progames2();
+//   })
+//   .then((data) => {
+//     console.log(data);
+//     return progames3();
+//   })
+//   .then((data) => {
+//     console.log(data);
+//     return progames4();
+//   })
+//   .then((data) => {
+//     console.log(data);
+//   });
+
+// sử dụng async await
+
+// const run = async () => {
+//   await progames1();
+//   await progames2();
+//   await progames3();
+//   let data4 = await progames4();
+//   console.log(data4);
+// };
+// run();
+progames1();
+progames2();
+progames3();
+progames4();
